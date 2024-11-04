@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: mybatis-plus-annotation
+Implementation-Version: 3.5.1
+Build-Timestamp: 2024-11-05 03:02:30
+Built-By: xmly
+Bundle-DocURL: https://baomidou.com/
+Build-OS: Mac OS X
+Built-Gradle: 7.1
+Build-Jdk: 1.8.0_371
+
