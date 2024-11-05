@@ -1,0 +1,17 @@
+
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IdentifierGenerator
+
+class ImadcnIdentifierGenerator implements IdentifierGenerator
+
+
+class DefaultIdentifierGenerator implements IdentifierGenerator {
+    - Sequence sequence
+}
+
+
+
+
+@enduml

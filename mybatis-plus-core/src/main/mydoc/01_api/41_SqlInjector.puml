@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface ISqlInjector {
+    + void inspectInject(MapperBuilderAssistant builderAssistant, Class<?> mapperClass);
+}
+
+abstract class AbstractSqlInjector implements ISqlInjector{
+    + abstract List<AbstractMethod> getMethodList(Class<?> mapperClass,TableInfo tableInfo);
+}
+AbstractSqlInjector *-right-> AbstractMethod: 依赖
+
+class DefaultSqlInjector extends AbstractSqlInjector 
+
+@enduml

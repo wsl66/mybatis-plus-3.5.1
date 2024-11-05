@@ -1,0 +1,55 @@
+
+@startuml
+'https://plantuml.com/class-diagram
+
+<>rt
+
+<>mod
+rt --> mod: 有修改的API
+
+mod ----> MybatisConfiguration
+class MybatisConfiguration{
+    # MybatisMapperRegistry mybatisMapperRegistry;
+    # Map<String, ResultMap> resultMaps;
+    # Map<String, ParameterMap> parameterMaps;
+    # Map<String, KeyGenerator> keyGenerators;
+    # Map<String, XNode> sqlFragments;
+    # Map<String, MappedStatement> mappedStatements
+}
+
+mod ----> MybatisMapperRegistry
+class MybatisMapperRegistry {
+    - Configuration config;
+    - Map<Class<?>, MybatisMapperProxyFactory<?>> knownMappers
+}
+
+mod ----> MybatisMapperProxy
+class MybatisMapperProxy{
+    //拷贝自MapperProxy
+}
+
+mod ----> MybatisMapperMethod
+class MybatisMapperMethod{
+    //拷贝自MapperMethod,支持了分页
+}
+
+mod ----> MybatisMapperProxyFactory
+class MybatisMapperProxyFactory{
+    //拷贝自MapperProxyFactory
+}
+mod ----> MybatisSqlSessionFactoryBuilder
+class MybatisMapperProxyFactory{
+    //拷贝自SqlSessionFactoryBuilder
+}
+mod ----> MybatisMapperAnnotationBuilder
+class MybatisMapperAnnotationBuilder{
+    //继承MapperAnnotationBuilder
+    //进行了增强:生成Sql
+}
+mod ----> InjectorResolver
+class InjectorResolver{
+    //继承MapperAnnotationBuilder
+    //进行了增强:生成Sql
+}
+
+@enduml

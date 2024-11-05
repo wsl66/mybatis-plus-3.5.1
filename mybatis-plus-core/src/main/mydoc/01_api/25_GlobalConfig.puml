@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class GlobalConfig {
+    - boolean enableSqlRunner;
+    - DbConfig dbConfig;
+    - ISqlInjector sqlInjector;
+    - Class<?> superMapperClass = Mapper.class;
+    - SqlSessionFactory sqlSessionFactory;
+    - Set<String> mapperRegistryCache;
+    - MetaObjectHandler metaObjectHandler;
+    - IdentifierGenerator identifierGenerator;
+}
+
+interface IdentifierGenerator
+GlobalConfig o--> IdentifierGenerator
+interface ISqlInjector
+GlobalConfig o--> ISqlInjector
+
+GlobalConfig o--> DbConfig
+class DbConfig {
+        - IdType idType;
+        - String tablePrefix;
+        - String schema;
+        - String columnFormat;
+        - String propertyFormat;
+        - boolean replacePlaceholder;
+        - boolean tableUnderline;
+        - boolean capitalMode;
+        - List<IKeyGenerator> keyGenerators;
+        - String logicDeleteField;
+        - FieldStrategy insertStrategy;
+        - FieldStrategy updateStrategy;
+        - FieldStrategy whereStrategy
+     }
+
+@enduml

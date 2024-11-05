@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IPage
+
+Page o-right-> OrderItem
+class OrderItem {
+    - String column;
+    - boolean asc = true;
+}
+
+class Page<T> implements IPage {
+    # List<T> records;
+    # long total = 0;
+    # long size = 10;
+    # long current = 1;
+    # List<OrderItem> orders;
+    # boolean optimizeCountSql = true;
+    # boolean searchCount = true;
+    # String countId;
+    # Long maxLimit;
+}
+
+class PageDTO<T> extends Page
+
+
+@enduml

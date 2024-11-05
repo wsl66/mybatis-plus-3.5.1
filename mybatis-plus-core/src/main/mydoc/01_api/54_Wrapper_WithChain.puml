@@ -1,0 +1,27 @@
+
+@startuml
+'https://plantuml.com/class-diagram
+
+
+abstract class Wrapper<T> implements ISqlSegment
+
+abstract class AbstractWrapper extends Wrapper  implements Compare, Nested, Join, Func
+
+class QueryWrapper extends AbstractWrapper  implements Query
+class EmptyWrapper<T> extends QueryWrapper
+
+class UpdateWrapper extends AbstractWrapper  implements Update
+
+abstract class AbstractLambdaWrapper extends AbstractWrapper
+
+class LambdaQueryWrapper extends AbstractLambdaWrapper  implements Query
+class LambdaUpdateWrapper extends AbstractLambdaWrapper  implements Update
+
+abstract class AbstractChainWrapper extends Wrapper implements Compare, Func, Join, Nested
+class LambdaQueryChainWrapper extends AbstractChainWrapper implements ChainQuery, Query
+class QueryChainWrapper extends AbstractChainWrapper implements ChainQuery, Query
+class UpdateChainWrapper extends AbstractChainWrapper implements ChainUpdate, Update
+class LambdaUpdateChainWrapper extends AbstractChainWrapper implements ChainUpdate, Update
+
+
+@enduml

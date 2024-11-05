@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TableInfo implements Constants {
+    - Class<?> entityType;
+    - IdType idType = IdType.NONE;
+    - String tableName;
+    - String resultMap;
+    - boolean autoInitResultMap;
+    - boolean keyRelated;
+    - String keyColumn;
+    - String keyProperty;
+    - Class<?> keyType;
+    - KeySequence keySequence;
+    - List<TableFieldInfo> fieldList;
+    - String currentNamespace;
+    - Configuration configuration;
+    - boolean underCamel;
+    - String allSqlSelect;
+    - String sqlSelect;
+    - boolean withInsertFill;
+    - boolean withUpdateFill;
+    - boolean withLogicDelete;
+    - TableFieldInfo logicDeleteFieldInfo;
+    - boolean withVersion;
+    - TableFieldInfo versionFieldInfo;
+    - List<TableFieldInfo> orderByFields;
+    - Reflector reflector;
+}
+
+
+class TableFieldInfo implements Constants {
+
+    - Field field;
+    - String column;
+    - String property;
+    - String el;
+    - String mapping;
+    - Class<?> propertyType;
+    - boolean isPrimitive;
+    - boolean isCharSequence;
+    - FieldStrategy insertStrategy;
+    - FieldStrategy updateStrategy;
+    - FieldStrategy whereStrategy;
+    - boolean version;
+    - boolean select = true;
+    - boolean logicDelete = false;
+    - String logicDeleteValue;
+    - String logicNotDeleteValue;
+    - String update;
+    - String condition = SqlCondition.EQUAL;
+    - FieldFill fieldFill = FieldFill.DEFAULT;
+    - boolean withInsertFill;
+    - boolean withUpdateFill;
+    - String sqlSelect;
+    - JdbcType jdbcType;
+    - Class<? extends TypeHandler<?>> typeHandler;
+    - boolean isOrderBy;
+    - String orderByType;
+    - short orderBySort;
+}
+
+
+@enduml

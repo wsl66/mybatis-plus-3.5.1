@@ -50,6 +50,9 @@ import java.util.stream.Collectors;
  * replace default Configuration class
  * <p>Caratacus 2016/9/25 replace mapperRegistry</p>
  *
+ * 代替默认的Configuration
+ * 代替mapperRegistry
+ *
  * @author hubin
  * @since 2016-01-23
  */

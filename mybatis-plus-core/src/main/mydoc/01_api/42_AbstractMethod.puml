@@ -1,0 +1,42 @@
+
+@startuml
+'https://plantuml.com/class-diagram
+
+
+abstract class AbstractMethod implements Constants {
+    # Configuration configuration;
+    # LanguageDriver languageDriver;
+    # MapperBuilderAssistant builderAssistant;
+    # String methodName
+}
+
+class ImplMethod implements AbstractMethod
+
+class ImplMethod{
+    Insert
+    Update
+    UpdateById
+    Upsert
+
+    Delete
+    DeleteById
+    DeleteBatchByIds
+    DeleteByMap
+
+    LogicDeleteBatchByIds
+    SelectBatchByIds
+    SelectById
+    SelectByMap
+    SelectCount
+    SelectList
+    SelectMaps
+    SelectMapsPage
+    SelectObjs
+    SelectOne
+    SelectPage
+}
+
+
+
+
+@enduml
