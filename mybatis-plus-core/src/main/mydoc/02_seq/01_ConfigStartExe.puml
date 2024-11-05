@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title mybatisPlus启动、使用流程(MappedStatement生命周期被接管)
+
+participant "应用app" as client order 1
+participant "ApplicationContext" as context order 2
+participant MybatisConfiguration as config order 3
+participant MybatisMapperRegistry as mapperRest order 3
+participant MybatisMapperAnnotationBuilder as mapperBuilder order 5
+participant DefaultSqlInjector as sqlInj order 7
+participant AbstractMethod as abMethod order 11
+participant MybatisMapperProxy as mapperProxy order 17
+participant MybatisMapperMethod as mapperMethod order 19
+
+autonumber
+hide unlinked
+
+
+==一、应用启动阶段==
+
+client o-> context: 配置DataSource\nMybatisSqlSessionFactoryBean
+client o-> context: 根据@MapperScan扫描Mapper类\n封装成MapperFactoryBean
+context -> config: addMapper添加该namespace
+config -> mapperRest: addMapper添加该namespace
+mapperRest -> mapperRest: 为该ns封装代理工厂\nMybatisMapperProxyFactory
+mapperRest -> mapperBuilder: 解析该namespace接口
+mapperBuilder -> sqlInj: 该Mapper超类是Mapper时\n解析动态SQL
+group parserInjector()
+    sqlInj -> sqlInj: 根据ModelClass解析TableInfo
+    sqlInj -> sqlInj: 根据MapperClass解析AbstractMethod方法列表
+    sqlInj -> abMethod: 将每个方法sql模版替换表名和所有字段拼成条件\n封装成SqlSource和MappedStatement
+end
+sqlInj --> config: 方法对应的MappedStatement到配置并缓存
+
+==二、用Mapper代理执行==
+
+client o-> mapperProxy: 代理执行
+mapperProxy -> mapperMethod: 获取前面的MappedStatement
+mapperMethod -> mapperMethod: sql变量替换即可
+mapperMethod --> client: 完成正常执行
+
+
+
+
+
+@enduml
