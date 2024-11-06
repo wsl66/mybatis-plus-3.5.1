@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+<>rt
+rt --> MybatisPlusPropertiesCustomizer: 可定制化配置
+interface MybatisPlusPropertiesCustomizer {
+    void customize(MybatisPlusProperties properties);
+}
+MybatisPlusPropertiesCustomizer *--> MybatisPlusProperties
+
+rt --> ConfigurationCustomizer: 可定制化配置
+interface ConfigurationCustomizer {
+    void customize(MybatisConfiguration configuration);
+}
+ConfigurationCustomizer *--> MybatisConfiguration
+
+
+
+
+@enduml

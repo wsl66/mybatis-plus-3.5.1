@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MybatisPlusAutoConfiguration
+
+MybatisPlusAutoConfiguration --> condition: 1.装配条件
+class condition{
+    1.必须有mybatis包,mybatis-spring包
+    2.容器中仅单个DataSource实例
+    3.在DataSourceAutoConfiguration后装配
+}
+
+MybatisPlusAutoConfiguration --> MybatisPlusProperties: 2.激活配置类
+
+MybatisPlusAutoConfiguration --> OptionalDepComponent: 3.可选Mybatis组件注入
+class OptionalDepComponent{
+    Interceptor
+    TypeHandler
+    ConfigurationCustomizer
+    MybatisPlusPropertiesCustomizer
+}
+
+MybatisPlusAutoConfiguration --> "@Bean": 4.注入Bean
+class "@Bean"{
+    MybatisSqlSessionFactoryBean
+    SqlSessionTemplate
+    MapperScannerConfigurer:没有@MapperScan时生效,定制化扫描(启动类package下扫描@Mapper注解)
+}
+
+
+@enduml

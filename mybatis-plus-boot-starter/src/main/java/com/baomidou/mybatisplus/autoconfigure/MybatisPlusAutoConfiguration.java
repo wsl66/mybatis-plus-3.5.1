@@ -84,6 +84,11 @@ import java.util.stream.Stream;
  * </p>
  * <p> copy from {@link org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration}</p>
  *
+ * EnableAutoConfiguration实现，用于 Mybatis 自动配置。
+ * 提供 SqlSessionFactory 和 SqlSessionTemplate。
+ * <p> 如果使用 org.mybatis.spring.annotation.MapperScan，或者将配置文件指定为属性，则会考虑这些，否则此自动配置将尝试根据根自动配置包中或下的接口定义注册映射器。</p>
+ * <p> 从 org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration 复制</p>
+ *
  * @author Eddú Meléndez
  * @author Josh Long
  * @author Kazuki Shimizu
